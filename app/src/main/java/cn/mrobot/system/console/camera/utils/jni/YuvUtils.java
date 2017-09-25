@@ -53,6 +53,10 @@ public class YuvUtils {
         rgb565ToArgbInternal(rgb,width,height,argb);
     }
 
+    public void i420ToNV21(byte[] i420, int width, int height, byte[] nv21){
+        I420ToNV21Internal(i420, width, height, nv21);
+    }
+
     private native void rgbToBgrInternal(byte[] rgb, int width, int height, byte[] bgr);
     private native void rgb565ToI420Internal(byte[] rgb, int width, int height, byte[] yuv);
     private native void rgb565ToArgbInternal(byte[] rgb, int width, int height, byte[] argb);
@@ -60,4 +64,5 @@ public class YuvUtils {
     private native void bgrToNV12Internal(byte[] bgr, int width, int height, byte[] yuv);
     private native void bgrToI420Internal(byte[] bgr, int width, int height, byte[] yuv);
     private native void bgrToYV12Internal(byte[] bgr, int width, int height, byte[] yuv);
+    private native void I420ToNV21Internal(byte[] i420, int width, int height, byte[] nv21);
 }

@@ -8,8 +8,10 @@ extern "C" {
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_rgbToBgrInternal(JNIEnv *env, jobject,
-                                                                         jbyteArray rgbArray, jint width,
-                                                                         jint height, jbyteArray bgrArray) {
+                                                                         jbyteArray rgbArray,
+                                                                         jint width,
+                                                                         jint height,
+                                                                         jbyteArray bgrArray) {
 
     jbyte *rgb = env->GetByteArrayElements(rgbArray, NULL);
     jbyte *bgr = env->GetByteArrayElements(bgrArray, NULL);
@@ -22,13 +24,16 @@ Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_rgbToBgrInternal(JNIEnv 
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_rgb565ToI420Internal(JNIEnv *env, jobject,
-                                                                          jbyteArray rgbArray, jint width,
-                                                                          jint height, jbyteArray yuvArray) {
+                                                                             jbyteArray rgbArray,
+                                                                             jint width,
+                                                                             jint height,
+                                                                             jbyteArray yuvArray) {
     jbyte *rgb = env->GetByteArrayElements(rgbArray, NULL);
     jbyte *yuv = env->GetByteArrayElements(yuvArray, NULL);
 
-    RGB565ToI420((uint8 *) rgb, width << 1, (uint8 *) yuv, width, (uint8 *) &yuv[width * height], (width + 1) / 2,
-               (uint8 *) &yuv[width * height * 5 / 4], (width + 1) / 2, width, height);
+    RGB565ToI420((uint8 *) rgb, width << 1, (uint8 *) yuv, width, (uint8 *) &yuv[width * height],
+                 (width + 1) / 2,
+                 (uint8 *) &yuv[width * height * 5 / 4], (width + 1) / 2, width, height);
 
     env->ReleaseByteArrayElements(yuvArray, yuv, 0);
     env->ReleaseByteArrayElements(rgbArray, rgb, 0);
@@ -37,8 +42,10 @@ Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_rgb565ToI420Internal(JNI
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_rgb565ToArgbInternal(JNIEnv *env, jobject,
-                                                                             jbyteArray rgbArray, jint width,
-                                                                             jint height, jbyteArray argbArray) {
+                                                                             jbyteArray rgbArray,
+                                                                             jint width,
+                                                                             jint height,
+                                                                             jbyteArray argbArray) {
     jbyte *rgb = env->GetByteArrayElements(rgbArray, NULL);
     jbyte *argb = env->GetByteArrayElements(argbArray, NULL);
 
@@ -51,12 +58,15 @@ Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_rgb565ToArgbInternal(JNI
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToNV21Internal(JNIEnv *env, jobject,
-                                                                          jbyteArray bgrArray, jint width,
-                                                                          jint height, jbyteArray yuvArray) {
+                                                                          jbyteArray bgrArray,
+                                                                          jint width,
+                                                                          jint height,
+                                                                          jbyteArray yuvArray) {
     jbyte *bgr = env->GetByteArrayElements(bgrArray, NULL);
     jbyte *yuv = env->GetByteArrayElements(yuvArray, NULL);
 
-    ARGBToNV21((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height], width, width, height);
+    ARGBToNV21((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height],
+               width, width, height);
 
     env->ReleaseByteArrayElements(yuvArray, yuv, 0);
     env->ReleaseByteArrayElements(bgrArray, bgr, 0);
@@ -65,12 +75,15 @@ Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToNV21Internal(JNIEnv
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToNV12Internal(JNIEnv *env, jobject,
-                                                                          jbyteArray bgrArray, jint width,
-                                                                          jint height, jbyteArray yuvArray) {
+                                                                          jbyteArray bgrArray,
+                                                                          jint width,
+                                                                          jint height,
+                                                                          jbyteArray yuvArray) {
     jbyte *bgr = env->GetByteArrayElements(bgrArray, NULL);
     jbyte *yuv = env->GetByteArrayElements(yuvArray, NULL);
 
-    ARGBToNV12((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height], width, width, height);
+    ARGBToNV12((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height],
+               width, width, height);
 
     env->ReleaseByteArrayElements(yuvArray, yuv, 0);
     env->ReleaseByteArrayElements(bgrArray, bgr, 0);
@@ -78,12 +91,15 @@ Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToNV12Internal(JNIEnv
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToI420Internal(JNIEnv *env, jobject,
-                                                                          jbyteArray bgrArray, jint width,
-                                                                          jint height, jbyteArray yuvArray) {
+                                                                          jbyteArray bgrArray,
+                                                                          jint width,
+                                                                          jint height,
+                                                                          jbyteArray yuvArray) {
     jbyte *bgr = env->GetByteArrayElements(bgrArray, NULL);
     jbyte *yuv = env->GetByteArrayElements(yuvArray, NULL);
 
-    ARGBToI420((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height], (width + 1) / 2,
+    ARGBToI420((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height],
+               (width + 1) / 2,
                (uint8 *) &yuv[width * height * 5 / 4], (width + 1) / 2, width, height);
 
     env->ReleaseByteArrayElements(yuvArray, yuv, 0);
@@ -92,16 +108,37 @@ Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToI420Internal(JNIEnv
 
 JNIEXPORT void JNICALL
 Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_bgrToYV12Internal(JNIEnv *env, jobject,
-                                                                          jbyteArray bgrArray, jint width,
-                                                                          jint height, jbyteArray yuvArray) {
+                                                                          jbyteArray bgrArray,
+                                                                          jint width,
+                                                                          jint height,
+                                                                          jbyteArray yuvArray) {
     jbyte *bgr = env->GetByteArrayElements(bgrArray, NULL);
     jbyte *yuv = env->GetByteArrayElements(yuvArray, NULL);
 
-    ARGBToI420((uint8 *) bgr, width << 2, (uint8 *) yuv, width, (uint8 *) &yuv[width * height * 5 / 4], (width + 1) / 2,
+    ARGBToI420((uint8 *) bgr, width << 2, (uint8 *) yuv, width,
+               (uint8 *) &yuv[width * height * 5 / 4], (width + 1) / 2,
                (uint8 *) &yuv[width * height], (width + 1) / 2, width, height);
 
     env->ReleaseByteArrayElements(yuvArray, yuv, 0);
     env->ReleaseByteArrayElements(bgrArray, bgr, 0);
+}
+
+JNIEXPORT void JNICALL
+Java_cn_mrobot_system_console_camera_utils_jni_YuvUtils_I420ToNV21Internal(JNIEnv *env, jobject,
+                                                                           jbyteArray i420Array,
+                                                                           jint width,
+                                                                           jint height,
+                                                                           jbyteArray nv21Array) {
+    jbyte *i420 = env->GetByteArrayElements(i420Array, NULL);
+    jbyte *nv21 = env->GetByteArrayElements(nv21Array, NULL);
+
+    I420ToNV21((uint8 *) i420, width, (uint8 *) &i420[width * height], (width + 1) / 2,
+               (uint8 *) &i420[width * height * 5 / 4], (width + 1) / 2, (uint8 *) nv21, width,
+               (uint8 *) &nv21[width * height], width, width, height);
+
+    env->ReleaseByteArrayElements(i420Array, i420, 0);
+    env->ReleaseByteArrayElements(nv21Array, nv21, 0);
+
 }
 
 } // extern "C"
