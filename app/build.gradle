@@ -21,8 +21,10 @@ model {
         ndk {
             moduleName = 'rgb2yuv'
             toolchain 'clang'
-//            cppFlags.add('-O2')
             cppFlags.add('-I' + file('src/main/jni/').absolutePath)
+            cppFlags.add('-I' + '/usr/lib/jvm/include')
+            cppFlags.add('-I' + '/usr/lib/jvm/include/linux')
+            cppFlags.add('-I' + '/usr/include')
             ldFlags.add('-L' + file('src/main/jniLibs/armeabi').absolutePath)
             ldFlags.add('-L' + file('src/main/jniLibs/armeabi-v7a').absolutePath)
             ldFlags.add('-L' + file('src/main/jniLibs/arm64-v8a').absolutePath)
